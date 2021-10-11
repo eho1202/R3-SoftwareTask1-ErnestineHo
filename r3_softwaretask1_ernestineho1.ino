@@ -33,6 +33,7 @@ void setup() {
   pinMode(H, OUTPUT);
 }
 
+// take the number in the tens place and output the corresponding number based on num
 void dispTens(int tens){
   if (tens == 0) {
     digitalWrite(A, 0);
@@ -87,6 +88,7 @@ void dispTens(int tens){
   }
 }
 
+// take the number in the ones place and output the corresponding number based on num
 void dispOnes(int ones){
   if (ones == 0) {
     digitalWrite(E, 0);
