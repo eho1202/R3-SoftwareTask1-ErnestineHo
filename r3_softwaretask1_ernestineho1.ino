@@ -8,9 +8,8 @@
       */
 
 int num, count;
-int potPin = A0; // potentiometer input pin 
+int potPin = A0; // set potentiometer input pin 
 int potVal;
-int dispVal;
 const int A=2;
 const int B=3;
 const int C=4;
@@ -20,7 +19,9 @@ const int F=7;
 const int G=8;
 const int H=9;
 
-// set pin 2 - 9 to output
+// set pin 2 - 9 to output and potPin to input
+// A - D == left decoder
+// E - h == right decoder
 void setup() {
   pinMode(potPin, INPUT);
   pinMode(A, OUTPUT);
@@ -148,8 +149,8 @@ void dispOnes(int ones){
 void loop(){
   int tens, ones;
   
-  potVal = analogRead(potPin);
-  num = map(potVal, 0, 1023, 0, 99);
+  potVal = analogRead(potPin); // read potiometer value
+  num = map(potVal, 0, 1023, 0, 99); // remap potVal from 0 - 1023 to 0 - 99
   tens = num / 10;
   ones = num % 10;
   dispTens(tens);
