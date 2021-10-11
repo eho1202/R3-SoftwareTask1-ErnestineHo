@@ -17,6 +17,8 @@ To take the value of the potentiometer, "potVal = analogRead(potPin)" is used to
 "num = map(potVal, 0, 1023, 0, 99)" takes the potVal and remaps the upper bound from 1023 to 99.    
 
 7-Segment decoders has 4 input lines and 7 output lines. The inputs of the decoders dictate which output ports should be set to HIGH (1) or LOW (0). The output ports are named a - g which corresponds to every a - g pin on the 7-segment display. To get a certain number to display on the 7-segment display, the remapped potentiometer value is used and some calcaulations is done.   
+
 "tens = num / 10" is used to output a number for the tens position (left 7-segment display)  
 "ones = num % 10" is used to output a number for the ones position (right 7-segment display)  
+
 The functions "dispTens" and "dispOnes" are used to match the corresponding number and display the right binary number onto the 7-segment displays. The functions take an integer number and use an if statement to check the integer number and output the corresponding binary value onto the 7-segment display. The 7-segment displays can display numbers from 0 - 99 by tuning the potentiometer wiper. 
