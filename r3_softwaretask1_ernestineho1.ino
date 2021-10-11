@@ -7,183 +7,152 @@
               9   
       */
 
-int num = 0;
-int potPin = A0;
+int num, count;
+int potPin = A0; // potentiometer input pin 
 int potVal;
 int dispVal;
-int decoder_pin1=2,decoder_pin2=3,decoder_pin3=4;
-int decoder_pin4=5,decoder_pin5=6,decoder_pin6=7;
-int decoder_pin7=8,decoder_pin8=9, i;
+const int A=2;
+const int B=3;
+const int C=4;
+const int D=5;
+const int E=6;
+const int F=7;
+const int G=8;
+const int H=9;
 
 // set pin 2 - 9 to output
 void setup() {
-  for (i=2;i<10;i++){
-    pinMode(i,OUTPUT);
+  pinMode(potPin, INPUT);
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(H, OUTPUT);
+}
+
+void dispTens(int tens){
+  if (tens == 0) {
+    digitalWrite(A, 0);
+    digitalWrite(B, 0);
+    digitalWrite(C, 0);
+    digitalWrite(D, 0);
+  } else if (tens == 1) {
+    digitalWrite(A, 1);
+    digitalWrite(B, 0);
+    digitalWrite(C, 0);
+    digitalWrite(D, 0);
+  } else if (tens == 2) {
+    digitalWrite(A, 0);
+    digitalWrite(B, 1);
+    digitalWrite(C, 0);
+    digitalWrite(D, 0);
+  } else if (tens == 3) {
+    digitalWrite(A, 1);
+    digitalWrite(B, 1);
+    digitalWrite(C, 0);
+    digitalWrite(D, 0);
+  } else if (tens == 4) {
+    digitalWrite(A, 0);
+    digitalWrite(B, 0);
+    digitalWrite(C, 1);
+    digitalWrite(D, 0);
+  } else if (tens == 5) {
+    digitalWrite(A, 1);
+    digitalWrite(B, 0);
+    digitalWrite(C, 1);
+    digitalWrite(D, 0);
+  } else if (tens == 6) {
+    digitalWrite(A, 0);
+    digitalWrite(B, 1);
+    digitalWrite(C, 1);
+    digitalWrite(D, 0);
+  } else if (tens == 7) {
+    digitalWrite(A, 1);
+    digitalWrite(B, 1);
+    digitalWrite(C, 1);
+    digitalWrite(D, 0);
+  } else if (tens == 8) {
+    digitalWrite(A, 0);
+    digitalWrite(B, 0);
+    digitalWrite(C, 0);
+    digitalWrite(D, 1);
+  } else if (tens == 9) {
+    digitalWrite(A, 1);
+    digitalWrite(B, 0);
+    digitalWrite(C, 0);
+    digitalWrite(D, 1);
   }
 }
 
-// display 0
-void a0(){
-  digitalWrite(decoder_pin1,LOW);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 1
-void a1(){
-  digitalWrite(decoder_pin1,HIGH);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 2
-void a2(){
-  digitalWrite(decoder_pin1,LOW);
-  digitalWrite(decoder_pin2,HIGH);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 3
-void a3(){
-  digitalWrite(decoder_pin1,HIGH);
-  digitalWrite(decoder_pin2,HIGH);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 4
-void a4(){
-  digitalWrite(decoder_pin1,LOW);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,HIGH);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 5
-void a5(){
-  digitalWrite(decoder_pin1,HIGH);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,HIGH);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 6
-void a6(){
-  digitalWrite(decoder_pin1, LOW);
-  digitalWrite(decoder_pin2,HIGH);
-  digitalWrite(decoder_pin3,HIGH);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 7
-void a7(){
-  digitalWrite(decoder_pin1,HIGH);
-  digitalWrite(decoder_pin2,HIGH);
-  digitalWrite(decoder_pin3,HIGH);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 8
-void a8(){
-  digitalWrite(decoder_pin1,LOW);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,HIGH);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 9
-void a9(){
-  digitalWrite(decoder_pin1,HIGH);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,HIGH);
-  digitalWrite(decoder_pin5,LOW);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
-}
-
-// display 10
-void a10(){
-  digitalWrite(decoder_pin1,LOW);
-  digitalWrite(decoder_pin2,LOW);
-  digitalWrite(decoder_pin3,LOW);
-  digitalWrite(decoder_pin4,LOW);
-  digitalWrite(decoder_pin5,HIGH);
-  digitalWrite(decoder_pin6,LOW);
-  digitalWrite(decoder_pin7,LOW);
-  digitalWrite(decoder_pin8,LOW);
+void dispOnes(int ones){
+  if (ones == 0) {
+    digitalWrite(E, 0);
+    digitalWrite(F, 0);
+    digitalWrite(G, 0);
+    digitalWrite(H, 0);
+  } else if (ones == 1) {
+    digitalWrite(E, 1);
+    digitalWrite(F, 0);
+    digitalWrite(G, 0);
+    digitalWrite(H, 0);
+  } else if (ones == 2) {
+    digitalWrite(E, 0);
+    digitalWrite(F, 1);
+    digitalWrite(G, 0);
+    digitalWrite(H, 0);
+  } else if (ones == 3) {
+    digitalWrite(E, 1);
+    digitalWrite(F, 1);
+    digitalWrite(G, 0);
+    digitalWrite(H, 0);
+  } else if (ones == 4) {
+    digitalWrite(E, 0);
+    digitalWrite(F, 0);
+    digitalWrite(G, 1);
+    digitalWrite(H, 0);
+  } else if (ones == 5) {
+    digitalWrite(E, 1);
+    digitalWrite(F, 0);
+    digitalWrite(G, 1);
+    digitalWrite(H, 0);
+  } else if (ones == 6) {
+    digitalWrite(E, 0);
+    digitalWrite(F, 1);
+    digitalWrite(G, 1);
+    digitalWrite(H, 0);
+  } else if (ones == 7) {
+    digitalWrite(E, 1);
+    digitalWrite(F, 1);
+    digitalWrite(G, 1);
+    digitalWrite(H, 0);
+  } else if (ones == 8) {
+    digitalWrite(E, 0);
+    digitalWrite(F, 0);
+    digitalWrite(G, 0);
+    digitalWrite(H, 1);
+  } else if (ones == 9) {
+    digitalWrite(E, 1);
+    digitalWrite(F, 0);
+    digitalWrite(G, 0);
+    digitalWrite(H, 1);
+  }
+  
 }
 
 // if poteniometer num = certain num, call display num function
 void loop(){
-  if(num == 0){
-    a0();
-  }else if(num == 1){
-    a1();
-  }else if(num == 2){
-    a2();
-  }else if(num == 3){
-    a3();
-  }else if(num == 4){
-    a4();
-  }else if(num == 5){
-    a5();
-  }else if(num == 6){
-    a6();
-  }else if(num == 7){
-    a7();
-  }else if(num == 8){
-    a8();
-  }else if(num == 9){
-    a9();
-  }else if(num == 10){
-    a10();
-  }else{
-    num = 0;
-  }
+  int tens, ones;
   
   potVal = analogRead(potPin);
-  num = map(potVal, 0, 1023, 0, 10);
+  num = map(potVal, 0, 1023, 0, 99);
+  tens = num / 10;
+  ones = num % 10;
+  dispTens(tens);
+  dispOnes(ones);
+  
   Serial.println(potVal);
-  delay(20);
+  delay(100);
 }
